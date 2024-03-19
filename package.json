@@ -1,0 +1,25 @@
+{
+  "name": "mongo-uploader",
+  "module": "src/index.ts",
+  "type": "module",
+  "scripts": {
+    "lint": "bunx eslint --ext .js,.jsx,.ts,.tsx . && bunx prettier --check .",
+    "fix": "bunx eslint --fix --ext .js,.jsx,.ts,.tsx . && bunx prettier --write .",
+    "db:up": "docker compose -f \".mongo-uploader-dev-container/docker-compose.yml\" up -d --build",
+    "dev": "bun --watch src/index.ts",
+    "start": "bun src/index.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@typescript-eslint/eslint-plugin": "^7.3.1",
+    "@typescript-eslint/parser": "^7.3.1",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "husky": "^9.0.11",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.2"
+  },
+  "dependencies": {
+    "mongoose": "^8.2.2"
+  }
+}
