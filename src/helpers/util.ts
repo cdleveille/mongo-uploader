@@ -17,8 +17,13 @@ export const BaseSchema = new Schema<IBase>({
 });
 
 export const bulkInsert = async <T>(model: Model<T>, data: T[]) => {
-	await model.deleteMany();
-	log.info(`Deleted all records from ${model.modelName}.`);
-	await model.insertMany(data);
-	log.info(`Inserted ${data.length} records into ${model.modelName}.`);
+	try {
+		await model.deleteMany();
+		log.info(`Deleted all records from ${model.modelName}.`);
+		await model.insertMany(data);
+		log.info(`Inserted ${data.length} records into ${model.modelName}.`);
+	} catch (error) {
+		log.error(`Error deleting or inserting records in ${model.modelName}.`);
+		throw error;
+	}
 };

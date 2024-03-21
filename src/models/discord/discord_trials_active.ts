@@ -2,9 +2,9 @@ import { model, Schema } from "mongoose";
 
 import { BaseSchema } from "@helpers";
 
-import type { IDiscordGuildRevenue } from "@types";
+import type { IDiscordTrialsActive } from "@types";
 
-const DiscordGuildRevenueSchema = new Schema<IDiscordGuildRevenue>({
+const DiscordTrialsActiveSchema = new Schema<IDiscordTrialsActive>({
 	application_id: {
 		type: String
 	},
@@ -20,9 +20,12 @@ const DiscordGuildRevenueSchema = new Schema<IDiscordGuildRevenue>({
 	tier_name: {
 		type: String
 	},
-	payout_amount: {
+	is_trial: {
+		type: Boolean
+	},
+	active_subs: {
 		type: Number
 	}
 }).add(BaseSchema);
 
-export const DiscordGuildRevenue = model<IDiscordGuildRevenue>("discord_guild_revenue", DiscordGuildRevenueSchema);
+export const DiscordTrialsActive = model<IDiscordTrialsActive>("discord_trials_active", DiscordTrialsActiveSchema);

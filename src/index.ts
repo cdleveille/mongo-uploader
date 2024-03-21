@@ -18,7 +18,21 @@ import discord_guild_voice_activity from "../data/discord_guild_voice_activity.j
 import discord_joins_by_invite_link from "../data/discord_joins_by_invite_link.json";
 import discord_joins_by_referring_domain from "../data/discord_joins_by_referring_domain.json";
 import discord_joins_by_source from "../data/discord_joins_by_source.json";
+import discord_member_signups from "../data/discord_member_signups.json";
+import discord_new_members_by_discord_tenure from "../data/discord_new_members_by_discord_tenure.json";
+import discord_participators_by_guild_tenure from "../data/discord_participators_by_guild_tenure.json";
+import discord_participators_by_platform from "../data/discord_participators_by_platform.json";
+import discord_participators_by_reg_country from "../data/discord_participators_by_reg_country.json";
+import discord_popular_text_channels from "../data/discord_popular_text_channels.json";
+import discord_selected_welcome_channels from "../data/discord_selected_welcome_channels.json";
+import discord_servers_unfollowed from "../data/discord_servers_unfollowed.json";
+import discord_subscriber_cancellations from "../data/discord_subscriber_cancellations.json";
+import discord_subscriber_churn from "../data/discord_subscriber_churn.json";
+import discord_trials_active from "../data/discord_trials_active.json";
+import discord_trials_conversion from "../data/discord_trials_conversion.json";
+import discord_trials_started from "../data/discord_trials_started.json";
 import twitch_analytics_and_revenue_by_day from "../data/twitch_analytics_and_revenue_by_day.json";
+import twitch_stream_summary from "../data/twitch_stream_summary.json";
 
 try {
 	await connectToDatabase();
@@ -38,7 +52,23 @@ try {
 	await bulkInsert(Models.DiscordJoinsByInviteLink, discord_joins_by_invite_link);
 	await bulkInsert(Models.DiscordJoinsByReferringDomain, discord_joins_by_referring_domain);
 	await bulkInsert(Models.DiscordJoinsBySource, discord_joins_by_source);
+	await bulkInsert(Models.DiscordMemberSignups, discord_member_signups);
+	await bulkInsert(Models.DiscordNewMembersByDiscordTenure, discord_new_members_by_discord_tenure);
+	await bulkInsert(Models.DiscordParticipatorsByGuildTenure, discord_participators_by_guild_tenure);
+	await bulkInsert(Models.DiscordParticipatorsByPlatform, discord_participators_by_platform);
+	await bulkInsert(Models.DiscordParticipatorsByRegCountry, discord_participators_by_reg_country);
+	await bulkInsert(Models.DiscordPopularTextChannels, discord_popular_text_channels);
+	await bulkInsert(Models.DiscordSelectedWelcomeChannels, discord_selected_welcome_channels);
+	await bulkInsert(Models.DiscordServersUnfollowed, discord_servers_unfollowed);
+	await bulkInsert(Models.DiscordSubscriberCancellations, discord_subscriber_cancellations);
+	await bulkInsert(Models.DiscordSubscriberChurn, discord_subscriber_churn);
+	await bulkInsert(Models.DiscordTrialsActive, discord_trials_active);
+	await bulkInsert(Models.DiscordTrialsConversion, discord_trials_conversion);
+	await bulkInsert(Models.DiscordTrialsStarted, discord_trials_started);
 	await bulkInsert(Models.TwitchAnalyticsAndRevenueByDay, twitch_analytics_and_revenue_by_day);
+	await bulkInsert(Models.TwitchStreamSummary, twitch_stream_summary);
+	process.exit(0);
 } catch (error) {
 	log.error(error);
+	process.exit(1);
 }
