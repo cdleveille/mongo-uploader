@@ -36,10 +36,10 @@ MONGO_URI=<your-mongo-uri>
 ```
 mongo-uploader/
   data/
-	discord_active_subscription_members.json
-	discord_guild_activation.json
-	discord_guild_communicators.json
-	...
+    discord_active_subscription_members.json
+    discord_guild_activation.json
+    discord_guild_communicators.json
+    ...
 ```
 
 6. Run the upload:
