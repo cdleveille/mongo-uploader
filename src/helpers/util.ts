@@ -2,6 +2,8 @@ import { Model, Schema } from "mongoose";
 
 import { log } from "@services";
 
+import { Config } from "./config";
+
 import type { IBase } from "@types";
 
 export const BaseSchema = new Schema<IBase>({
@@ -18,8 +20,10 @@ export const BaseSchema = new Schema<IBase>({
 
 export const bulkInsert = async <T>(model: Model<T>, data: T[]) => {
 	try {
-		await model.deleteMany();
-		log.info(`Deleted all records from ${model.modelName}.`);
+		if (Config.DELETE_FIRST) {
+			await model.deleteMany();
+			log.info(`Deleted all records from ${model.modelName}.`);
+		}
 		await model.insertMany(data);
 		log.info(`Inserted ${data.length} records into ${model.modelName}.`);
 	} catch (error) {

@@ -1,6 +1,7 @@
 export interface IConfig {
 	IS_PROD: boolean;
 	MONGO_URI: string;
+	DELETE_FIRST: boolean;
 }
 
 export interface IBase {
